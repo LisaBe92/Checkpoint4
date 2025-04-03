@@ -15,7 +15,7 @@ import App from "./App";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import RecipeDetails from "./pages/RecipeDetails";
-import { getAllRecipes } from "./services/request";
+import { getAllRecipes, getRecipeById } from "./services/request";
 // import Contact from "./pages/Contact";
 
 /* ************************************************************************* */
@@ -34,13 +34,18 @@ const router = createBrowserRouter([
         }),
       },
       {
-        path: "/dashboard", // The path for the dashboard
-        element: <Dashboard />, // Renders the Dashboard component
+        path: "/dashboard",
+        element: <Dashboard />,
       },
       // Example of adding a new route:
       {
-        path: "/recipedetails", // The path for the about page
-        element: <RecipeDetails />, // Renders the About component
+        path: "/recipes/:recipeId",
+        element: <RecipeDetails />,
+        loader: async ({ params }) => {
+          const recipeId = params.recipeId;
+          const recipe = await getRecipeById(Number(recipeId));
+          return { recipe };
+        },
       },
     ],
   },

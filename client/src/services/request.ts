@@ -11,7 +11,7 @@ const getAllRecipes = () => {
 
 const getRecipeById = async (id: number) => {
   try {
-    const response = await axios.get(`${baseUrl}/api/recipes/${id}`);
+    const response = await axios.get(`${baseUrl}/recipes/${id}`);
     return response.data;
   } catch (error) {
     console.error(error);
