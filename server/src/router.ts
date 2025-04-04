@@ -13,9 +13,8 @@ router.get("/recipes/:id", recipeActions.read);
 router.post("/recipes", recipeActions.add);
 
 // Route pour mettre à jour une recette existante (PUT)
-router.put("/recipes/:id", recipeActions.update); // Tu devras implémenter la méthode 'update' dans recipeActions
-
+router.put("/recipes/:id", recipeActions.update);
 // Route pour supprimer une recette (DELETE)
-router.delete("/recipes/:id", recipeActions.deleteRecipe); // Tu devras également implémenter la méthode 'delete' dans recipeActions
+router.delete("/recipes/:id", recipeActions.deleteRecipe);
 
 export default router;

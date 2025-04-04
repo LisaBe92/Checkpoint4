@@ -65,6 +65,44 @@ class RecipeRepository {
     );
 
     if (result.affectedRows > 0) {
+      // Si des ingrédients sont fournis, gérer leur mise à jour
+      if (recipe.ingredients && recipe.ingredients.length > 0) {
+        // Supprimer les anciennes relations de recette avec ingrédients
+        await databaseClient.query<Result>(
+          "DELETE FROM recipe_ingredients WHERE recipe_id = ?",
+          [id],
+        );
+
+        // Ajouter les nouveaux ingrédients
+        const ingredientsArray = recipe.ingredients.split(","); // Si vous fournissez une chaîne d'ingrédients séparés par une virgule
+        for (const ingredientName of ingredientsArray) {
+          const [ingredientRows] = await databaseClient.query<Rows>(
+            "SELECT id FROM ingredients WHERE name = ?",
+            [ingredientName.trim()],
+          );
+
+          if (ingredientRows.length > 0) {
+            const ingredientId = ingredientRows[0].id;
+            await databaseClient.query<Result>(
+              "INSERT INTO recipe_ingredients (recipe_id, ingredient_id) VALUES (?, ?)",
+              [id, ingredientId],
+            );
+          } else {
+            // Si l'ingrédient n'existe pas, le créer
+            const [newIngredientResult] = await databaseClient.query<Result>(
+              "INSERT INTO ingredients (name) VALUES (?)",
+              [ingredientName.trim()],
+            );
+            const newIngredientId = newIngredientResult.insertId;
+            await databaseClient.query<Result>(
+              "INSERT INTO recipe_ingredients (recipe_id, ingredient_id) VALUES (?, ?)",
+              [id, newIngredientId],
+            );
+          }
+        }
+      }
+
+      // Récupérer la recette mise à jour
       const [rows] = await databaseClient.query<Rows>(
         "SELECT * FROM recipes WHERE id = ?",
         [id],
@@ -81,6 +119,20 @@ class RecipeRepository {
       [id],
     );
     return result.affectedRows > 0; // Retourne true si la suppression a été effectuée, sinon false
+  }
+
+  // Nouvelle méthode : récupérer les ingrédients d'une recette
+  async getIngredientsForRecipe(id: number): Promise<string[]> {
+    const [rows] = await databaseClient.query<Rows>(
+      `SELECT i.name
+       FROM ingredients i
+       LEFT JOIN recipe_ingredients ri ON i.id = ri.ingredient_id
+       WHERE ri.recipe_id = ?`,
+      [id],
+    );
+
+    // Extraire les noms des ingrédients et les retourner sous forme de tableau
+    return rows.map((row) => row.name);
   }
 }
 

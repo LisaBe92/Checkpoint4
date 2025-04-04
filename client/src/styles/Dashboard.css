@@ -1,0 +1,102 @@
+/* Style général pour le tableau de bord */
+.recipe-dashboard {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulaire d'ajout de recette */
+.recipe-form {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-form h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.recipe-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.recipe-form input,
+.recipe-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.recipe-form button.create {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.recipe-form button.create:hover {
+  background-color: #218838;
+}
+
+/* Liste des recettes */
+.recipe-list {
+  margin-top: 20px;
+}
+
+.recipe-list h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.recipe-item {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-item h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.recipe-item p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.recipe-item button {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.recipe-item button:hover {
+  background-color: #c82333;
+}
