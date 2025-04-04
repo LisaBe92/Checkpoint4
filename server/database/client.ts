@@ -1,7 +1,7 @@
-// Get variables from .env file for database connection
+// Importer les variables d'environnement pour la connexion à la base de données
 const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
-// Create a connection pool to the database
+// Créer un pool de connexions à la base de données
 import mysql from "mysql2/promise";
 
 const client = mysql.createPool({
@@ -12,7 +12,7 @@ const client = mysql.createPool({
   database: DB_NAME,
 });
 
-// Ready to export
+// Exporter le client pour l'utiliser dans d'autres fichiers
 export default client;
 
 // Types export

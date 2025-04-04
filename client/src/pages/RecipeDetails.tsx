@@ -46,11 +46,10 @@ export default function RecipeDetails() {
       <p>{recipe.instructions}</p>
 
       <h3>Ingrédients :</h3>
-      {/* Vérifiez si ingredients est un tableau avant d'essayer de le mapper */}
       <ul>
         {Array.isArray(recipe.ingredients) && recipe.ingredients.length > 0 ? (
-          recipe.ingredients.map((ingredient) => (
-            <li key={ingredient.name}>
+          recipe.ingredients.map((ingredient, index) => (
+            <li key={`${ingredient.name}-${index}`}>
               {ingredient.quantity} {ingredient.unit} de {ingredient.name}
             </li>
           ))

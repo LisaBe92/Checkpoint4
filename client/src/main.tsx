@@ -1,92 +1,70 @@
-// Import necessary modules from React and React Router
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-/* ************************************************************************* */
-
-// Import the main app component
+// Import des composants principaux
 import App from "./App";
-
-// Import additional components for new routes
-// Try creating these components in the "pages" folder
-
-// import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import RecipeDetails from "./pages/RecipeDetails";
 import { getAllRecipes, getRecipeById } from "./services/request";
-// import Contact from "./pages/Contact";
 
-/* ************************************************************************* */
-
-// Create router configuration with routes
-// You can add more routes as you build out your app!
+// Configuration du routeur
 const router = createBrowserRouter([
   {
-    element: <App />, // Renders the App component for the home page
+    element: <App />,
     children: [
       {
-        path: "/", // The root path
+        path: "/",
         element: <Home />,
-        loader: async () => ({
-          recipes: await getAllRecipes(),
-        }),
+        loader: async () => {
+          try {
+            const recipes = await getAllRecipes();
+            return { recipes };
+          } catch (error) {
+            console.error("Erreur lors du chargement des recettes :", error);
+            throw new Response("Erreur lors du chargement des recettes", {
+              status: 500,
+            });
+          }
+        },
       },
       {
         path: "/dashboard",
         element: <Dashboard />,
       },
-      // Example of adding a new route:
       {
         path: "/recipes/:recipeId",
         element: <RecipeDetails />,
         loader: async ({ params }) => {
-          const recipeId = params.recipeId;
-          const recipe = await getRecipeById(Number(recipeId));
-          return { recipe };
+          try {
+            const recipeId = params.recipeId;
+            if (!recipeId) {
+              throw new Response("ID de recette manquant", { status: 400 });
+            }
+            const recipe = await getRecipeById(Number(recipeId));
+            return { recipe };
+          } catch (error) {
+            console.error("Erreur lors du chargement de la recette :", error);
+            throw new Response("Erreur lors du chargement de la recette", {
+              status: 500,
+            });
+          }
         },
       },
     ],
   },
 ]);
 
-/* ************************************************************************* */
-
-// Find the root element in the HTML document
+// Récupération de l'élément racine dans le DOM
 const rootElement = document.getElementById("root");
-if (rootElement == null) {
-  throw new Error(`Your HTML Document should contain a <div id="root"></div>`);
+if (!rootElement) {
+  throw new Error(`Votre document HTML doit contenir un <div id="root"></div>`);
 }
 
-// Render the app inside the root element
+// Rendu de l'application
 createRoot(rootElement).render(
   <StrictMode>
     <RouterProvider router={router} />
   </StrictMode>,
 );
-
-/**
- * Helpful Notes:
- *
- * 1. Adding More Routes:
- *    To add more pages to your app, first create a new component (e.g., About.tsx).
- *    Then, import that component above like this:
- *
- *    import About from "./pages/About";
- *
- *    Add a new route to the router:
- *
- *      {
- *        path: "/about",
- *        element: <About />,  // Renders the About component
- *      }
- *
- * 2. Try Nested Routes:
- *    For more complex applications, you can nest routes. This lets you have sub-pages within a main page.
- *    Documentation: https://reactrouter.com/en/main/start/tutorial#nested-routes
- *
- * 3. Experiment with Dynamic Routes:
- *    You can create routes that take parameters (e.g., /users/:id).
- *    Documentation: https://reactrouter.com/en/main/start/tutorial#url-params-in-loaders
- */
