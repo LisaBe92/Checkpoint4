@@ -40,7 +40,6 @@ const add: RequestHandler = async (req, res, next) => {
       servings: req.body.servings,
       instructions: req.body.instructions,
       picture: req.body.picture,
-      ingredients: req.body.ingredients,
     };
 
     // Créer la nouvelle recette dans la base de données

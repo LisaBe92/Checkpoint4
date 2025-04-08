@@ -8,7 +8,7 @@ export default function Navbar() {
       <nav className="navbar">
         <ul className="nav-links">
           <li>
-            <Link to="/recipes">Recettes</Link>
+            <Link to="/about">A propos</Link>
           </li>
           <li>
             <Link to="/">
