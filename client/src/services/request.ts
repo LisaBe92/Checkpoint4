@@ -76,7 +76,6 @@ const updateRecipe = async (
   updatedRecipe: {
     title: string;
     description: string;
-    ingredients: string;
     instructions: string;
     difficulty: string;
     duration: string;

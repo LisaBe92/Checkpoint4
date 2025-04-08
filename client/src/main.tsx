@@ -2,14 +2,13 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-// Import des composants principaux
 import App from "./App";
+import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import RecipeDetails from "./pages/RecipeDetails";
 import { getAllRecipes, getRecipeById } from "./services/request";
 
-// Configuration du routeur
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -28,6 +27,10 @@ const router = createBrowserRouter([
             });
           }
         },
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/dashboard",
@@ -56,13 +59,11 @@ const router = createBrowserRouter([
   },
 ]);
 
-// Récupération de l'élément racine dans le DOM
 const rootElement = document.getElementById("root");
 if (!rootElement) {
   throw new Error(`Votre document HTML doit contenir un <div id="root"></div>`);
 }
 
-// Rendu de l'application
 createRoot(rootElement).render(
   <StrictMode>
     <RouterProvider router={router} />

@@ -12,6 +12,15 @@ const client = mysql.createPool({
   database: DB_NAME,
 });
 
+// Vérifier la connexion à la base de données
+client
+  .getConnection()
+  .then(() => console.log("Connexion à la base de données réussie."))
+  .catch((error) => {
+    console.error("Erreur de connexion à la base de données :", error.message);
+    process.exit(1); // Arrêter le processus si la connexion échoue
+  });
+
 // Exporter le client pour l'utiliser dans d'autres fichiers
 export default client;
 

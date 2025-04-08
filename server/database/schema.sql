@@ -29,43 +29,43 @@ VALUES
 
 ("Cookies aux pépites de chocolat", "Des cookies moelleux et croustillants à souhait.", "30 minutes", "Facile", 6,
 "1. Préchauffer le four à 180°C.\n2. Mélanger beurre, sucre, œufs, farine, levure et pépites.\n3. Former des boules et déposer sur une plaque.\n4. Cuire 12 à 15 min.\n5. Laisser refroidir avant de déguster.",
-"https://images.unsplash.com/photo-1599785209707-28b3ac2b5d64"),
+"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
 
 ("Madeleines", "De petites douceurs parfaites pour le goûter.", "45 minutes", "Facile", 8,
 "1. Préchauffer le four à 200°C.\n2. Fouetter les œufs et le sucre.\n3. Ajouter farine, levure, beurre fondu et zeste.\n4. Répartir dans les moules.\n5. Cuire 10-12 min.",
-"https://images.unsplash.com/photo-1620842258481-241cb6e4cdd2"),
+"https://images.unsplash.com/photo-1638518716535-955899d18a19?q=80&w=1563&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
 
 ("Clafoutis aux cerises", "Un dessert léger et fruité de saison.", "1 heure", "Facile", 6,
 "1. Préchauffer le four à 180°C.\n2. Mélanger les œufs, sucre, lait, farine.\n3. Verser sur les cerises dans un moule.\n4. Cuire 35-40 min.",
-"https://images.unsplash.com/photo-1564836235916-7f82d6a91d3a"),
+"https://www.hervecuisine.com/wp-content/uploads/2020/05/recette-clafoutis-facile-730x520.jpg.webp"),
 
 ("Cheesecake", "Un dessert crémeux avec une base biscuitée croustillante.", "6 heures", "Moyen", 8,
 "1. Préparer la base avec biscuits écrasés et beurre fondu.\n2. Mélanger fromage frais, sucre, œufs.\n3. Cuire 45 min au four, puis réfrigérer 4h.",
-"https://images.unsplash.com/photo-1589987607627-57c1d8d4e39e"),
+"https://mesdelicieusescreations.com/wp-content/uploads/2022/08/preparation-cheesecake-speculoos.jpg"),
 
 ("Moelleux au citron", "Un gâteau léger au goût frais de citron.", "50 minutes", "Facile", 6,
 "1. Préchauffer le four.\n2. Mélanger les ingrédients.\n3. Verser dans un moule et enfourner 30 min.\n4. Arroser d’un sirop au citron.",
-"https://images.unsplash.com/photo-1512058564366-18510be2db19"),
+"https://www.auxdelicesdupalais.net/gateau-moelleux-glacage-au-citron.html"),
 
 ("Muffins myrtilles", "Muffins moelleux et fruités parfaits pour le petit-déjeuner.", "40 minutes", "Facile", 6,
 "1. Préchauffer le four.\n2. Mélanger les ingrédients secs, puis humides.\n3. Ajouter les myrtilles.\n4. Verser dans les moules.\n5. Cuire 25 min.",
-"https://images.unsplash.com/photo-1562440499-bb4c130735eb"),
+"https://res.cloudinary.com/swissmilk/image/fetch/ar_16:10,g_auto,w_2592,c_fill,f_auto,q_auto,fl_progressive/https://api.swissmilk.ch/wp-content/uploads/2021/08/SM2021_DIVE_34_Heidelbeermuffins-scaled.jpg"),
 
 ("Brownie", "Un brownie fondant au cœur intense en chocolat.", "40 minutes", "Facile", 8,
 "1. Faire fondre chocolat et beurre.\n2. Ajouter sucre, œufs, farine.\n3. Verser dans un moule.\n4. Cuire 25 min.",
-"https://images.unsplash.com/photo-1600185365295-cf5f0b53544a"),
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgkdPjiWVh3aOedZEV_go_Fnean6RSAkubfQ&s"),
 
 ("Crêpes sucrées", "Des crêpes légères pour un goûter rapide.", "20 minutes", "Facile", 4,
 "1. Mélanger farine, œufs, lait, sucre.\n2. Laisser reposer 30 min.\n3. Cuire les crêpes dans une poêle chaude.",
-"https://images.unsplash.com/photo-1614691799746-39eaa9a03854"),
+"https://img-3.journaldesfemmes.fr/XsGlUw-EdzHu1Y6COsZMtOSxN4I=/750x500/30dfaa9e5a3a4e2891de60d077feec7f/ccmcms-jdf/39908662.jpg"),
 
 ("Chouquettes", "Petits choux aériens et saupoudrés de sucre perlé.", "1 heure", "Difficile", 6,
 "1. Préparer la pâte à choux.\n2. Dresser des petits tas.\n3. Saupoudrer de sucre perlé.\n4. Cuire à 180°C 25 min.",
-"https://images.unsplash.com/photo-1587499529576-b7fbb2dc9c3e"),
+"https://cloudykitchen.com/wp-content/uploads/2020/08/img_5f3f9a6fcd21d.jpg"),
 
 ("Tiramisu", "Un classique italien crémeux et gourmand.", "4 heures", "Moyen", 6,
 "1. Séparer les blancs des jaunes.\n2. Fouetter les jaunes avec sucre, mascarpone.\n3. Monter les blancs et les incorporer.\n4. Tremper les biscuits dans le café.\n5. Monter en couches.\n6. Réfrigérer 3h minimum.",
-"https://images.unsplash.com/photo-1620828229014-4a4a9ddfa437");
+"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.swissmilk.ch%2Ffr%2Frecettes-idees%2Frecettes%2FLM200710_94%2Ftiramisu%2F&psig=AOvVaw0glfPw7A5y-pBQ8VzlK92R&ust=1743851739418000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKi0rZCgvowDFQAAAAAdAAAAABAJ");
 
 -- Table ingredients
 CREATE TABLE ingredients (
@@ -219,19 +219,3 @@ INSERT INTO recipe_ingredients (recipe_id, ingredient_id, quantity, unit) VALUES
 (13, 20, 200.00, 'ml'),  -- Café
 (13, 21, 20.00, 'g');  -- Cacao
 
--- Vérifier que tous les IDs de recettes existent dans la table recipes
-SELECT id FROM recipes;
-
--- Vérifier que tous les IDs d'ingrédients existent dans la table ingredients
-SELECT id FROM ingredients;
-
--- Vérifier les références invalides dans la table recipe_ingredients
-SELECT * 
-FROM recipe_ingredients
-WHERE recipe_id NOT IN (SELECT id FROM recipes)
-   OR ingredient_id NOT IN (SELECT id FROM ingredients);
-
--- Supprimer les références invalides si nécessaire
-DELETE FROM recipe_ingredients
-WHERE recipe_id NOT IN (SELECT id FROM recipes)
-   OR ingredient_id NOT IN (SELECT id FROM ingredients);

@@ -1,0 +1,55 @@
+.about {
+  padding: 40px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  color: #b28b48;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-top: 40px;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+ul li strong {
+  font-weight: bold;
+}
+
+.testimonials ul {
+  margin-top: 30px;
+}
+
+.testimonials li {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}

@@ -10,14 +10,13 @@ type Recipe = {
   servings: number;
   instructions: string;
   picture: string;
-  ingredients: string;
 };
 
 class RecipeRepository {
   // The C of CRUD - Create operation
   async create(recipe: Omit<Recipe, "id">): Promise<number> {
     const [result] = await databaseClient.query<Result>(
-      "INSERT INTO recipes (title, description, duration, difficulty, servings, instructions, picture, ingredients) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO recipes (title, description, duration, difficulty, servings, instructions, picture) VALUES (?, ?, ?, ?, ?, ?, ?)",
       [
         recipe.title,
         recipe.description,
@@ -26,7 +25,6 @@ class RecipeRepository {
         recipe.servings,
         recipe.instructions,
         recipe.picture,
-        recipe.ingredients,
       ],
     );
     return result.insertId;
@@ -38,7 +36,7 @@ class RecipeRepository {
       "SELECT * FROM recipes WHERE id = ?",
       [id],
     );
-    return rows[0] ? (rows[0] as Recipe) : null; // Si aucune recette trouvée, retourner null
+    return rows[0] ? (rows[0] as Recipe) : null;
   }
 
   // The Rs of CRUD - Read All operation
@@ -50,7 +48,7 @@ class RecipeRepository {
   // The U of CRUD - Update operation
   async update(id: number, recipe: Omit<Recipe, "id">): Promise<Recipe | null> {
     const [result] = await databaseClient.query<Result>(
-      "UPDATE recipes SET title = ?, description = ?, duration = ?, difficulty = ?, servings = ?, instructions = ?, picture = ?, ingredients = ? WHERE id = ?",
+      "UPDATE recipes SET title = ?, description = ?, duration = ?, difficulty = ?, servings = ?, instructions = ?, picture = ? WHERE id = ?",
       [
         recipe.title,
         recipe.description,
@@ -59,57 +57,15 @@ class RecipeRepository {
         recipe.servings,
         recipe.instructions,
         recipe.picture,
-        recipe.ingredients,
         id,
       ],
     );
 
-    if (result.affectedRows > 0) {
-      // Si des ingrédients sont fournis, gérer leur mise à jour
-      if (recipe.ingredients && recipe.ingredients.length > 0) {
-        // Supprimer les anciennes relations de recette avec ingrédients
-        await databaseClient.query<Result>(
-          "DELETE FROM recipe_ingredients WHERE recipe_id = ?",
-          [id],
-        );
-
-        // Ajouter les nouveaux ingrédients
-        const ingredientsArray = recipe.ingredients.split(","); // Si vous fournissez une chaîne d'ingrédients séparés par une virgule
-        for (const ingredientName of ingredientsArray) {
-          const [ingredientRows] = await databaseClient.query<Rows>(
-            "SELECT id FROM ingredients WHERE name = ?",
-            [ingredientName.trim()],
-          );
-
-          if (ingredientRows.length > 0) {
-            const ingredientId = ingredientRows[0].id;
-            await databaseClient.query<Result>(
-              "INSERT INTO recipe_ingredients (recipe_id, ingredient_id) VALUES (?, ?)",
-              [id, ingredientId],
-            );
-          } else {
-            // Si l'ingrédient n'existe pas, le créer
-            const [newIngredientResult] = await databaseClient.query<Result>(
-              "INSERT INTO ingredients (name) VALUES (?)",
-              [ingredientName.trim()],
-            );
-            const newIngredientId = newIngredientResult.insertId;
-            await databaseClient.query<Result>(
-              "INSERT INTO recipe_ingredients (recipe_id, ingredient_id) VALUES (?, ?)",
-              [id, newIngredientId],
-            );
-          }
-        }
-      }
-
-      // Récupérer la recette mise à jour
-      const [rows] = await databaseClient.query<Rows>(
-        "SELECT * FROM recipes WHERE id = ?",
-        [id],
-      );
-      return rows[0] as Recipe;
+    if (result.affectedRows === 0) {
+      return null;
     }
-    return null; // Si aucune recette n'a été mise à jour, retourner null
+
+    return this.read(id);
   }
 
   // The D of CRUD - Delete operation
@@ -118,7 +74,7 @@ class RecipeRepository {
       "DELETE FROM recipes WHERE id = ?",
       [id],
     );
-    return result.affectedRows > 0; // Retourne true si la suppression a été effectuée, sinon false
+    return result.affectedRows > 0;
   }
 
   // Nouvelle méthode : récupérer les ingrédients d'une recette
@@ -131,7 +87,6 @@ class RecipeRepository {
       [id],
     );
 
-    // Extraire les noms des ingrédients et les retourner sous forme de tableau
     return rows.map((row) => row.name);
   }
 }

@@ -1,4 +1,5 @@
 import express from "express";
+import recipeRepository from "../database/RecipeRepository";
 import recipeActions from "./modules/recipe/recipeActions";
 
 const router = express.Router();
